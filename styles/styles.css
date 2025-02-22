@@ -1,7 +1,22 @@
 .casilla {
-    width: 25px;
-    height: 25px;
-    background-color: orange;
+    width: 22px;
+    height: 22px;
     border: none;
-    margin: 5px;
+    margin: 2px;
+}
+
+.m {
+    width: 22px;
+    height: 22px;
+    background-color: red !important;
+    border: none;
+    margin: 2px;
+}
+
+.g {
+    width: 22px;
+    height: 22px;
+    background-color: green !important;
+    border: none;
+    margin: 2px;
 }
