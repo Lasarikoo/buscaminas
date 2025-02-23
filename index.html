@@ -8,21 +8,39 @@
     </head>
     <!-- Header -->
     <header class="shadow">
-        <nav class="navbar bg-light">
+        <nav class="navbar bg-dark shadow border-bottom">
             <div class="container-fluid">
-              <a class="navbar-brand" href="#">
-                <img src="https://bega.ltd/wp-content/uploads/2024/04/cropped-BEGA-LOGO-e1712415731929.png" alt="BEGA Developers" width="256" height="48">
-              </a>
+                <!-- Website title -->
+                <p class="fs-5 text-white my-auto">Mines project</p>
+                <!-- Social media icons -->
+                <div class="me-sm-4">
+                    <a href="https://github.com/Lasarikoo"><i class="fa-brands fa-github" style="color: #ffffff;"></i></a>
+                    <a href="https://www.linkedin.com/in/l%C3%A1zaro-beltr%C3%A1n-12a393337/"><i class="fa-brands fa-linkedin" style="color: #ffffff;"></i></a>
+                </div>
             </div>
           </nav>
     </header>
     <!-- Body -->
     <body>
-        <div class="container-fluid bg-dark">
-            <!-- Contenedor del body a pantalla completa -->
-            <div class="d-flex flex-column justify-content-center align-items-center vh-100">   
-                <div class="p-1 d-flex justify-content-center align-items-center" id="gameCanva">
-                    <!-- Tablero del juego -->
+        <div class="container-fluid bg-dark m-0 p-0 d-flex align-items-center">
+            <div class="shadow border-end" id="sidebar">
+                <div class="mt-5 pt-5 text-center">
+                    <p class="fs-3 fw-bolder text-white">Game mode:</p>
+                    <button type="button" class="btn btn-success" data-bs-toggle="button" id="10x10" onclick="renderGame(100, 10)">10x10</button>
+                    <button type="button" class="btn btn-success" data-bs-toggle="button" id="10x10" onclick="renderGame(225, 40)">15x15</button>
+                    <button type="button" class="btn btn-success" data-bs-toggle="button" id="10x10" onclick="renderGame(400, 90)">20x20</button>
+                </div>
+            </div>
+            <div class="text-center mb-5" id="gameCanva">
+                <div class="p-1 text-center" id="gametab"></div>
+            </div>
+            
+
+            </div>
+            <!-- Contenedor del body a pantalla completa
+            <div class="d-flex flex-column justify-content-center align-items-center vh-100 bg-danger">   
+                <div class="p-1 d-flex justify-content-center align-items-center mt-5" id="gameCanva">
+                    <!-- Tablero del juego
                     <div class="p-1 text-center" id="gametab">
                         
                     </div>
@@ -32,7 +50,7 @@
                     <button type="button" class="btn btn-success" data-bs-toggle="button" id="10x10" onclick="renderGame(225, 40)">15x15</button>
                     <button type="button" class="btn btn-success" data-bs-toggle="button" id="10x10" onclick="renderGame(400, 90)">20x20</button>
                 </div>
-            </div>
+            </div>  -->
         </div>
 
         <!-- Modal para anunciar derrota -->

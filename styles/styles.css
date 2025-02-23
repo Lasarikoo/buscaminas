@@ -4,8 +4,13 @@ header {
     width: 100%;
 }
 
+#sidebar {
+    width: 20%;
+    height: 100vh;
+}
+
 #gameCanva {
-    width: 70vw;
+    width: 70%;
     height: 70vh;
 }
 
