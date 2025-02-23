@@ -21,7 +21,7 @@ function renderGame(boxes, mines) {
 
     // Generación de tablero
     for (let x = 0; x < boxes; x++) { 
-        html += `<button type="button" class="rounded bg-white casilla" id="${x}" onclick="checkBox(${x})"></button>`;
+        html += `<button type="button" class="rounded bg-white casilla" id="${x}" onclick="checkBox(${x})" oncontextmenu="flagMine(event, ${x})"></button>`;
         cellCounter++;
         
         // Agregar un salto de línea después de cada fila
@@ -42,10 +42,21 @@ function renderGame(boxes, mines) {
 }
 
 // Función que detiene el juego
-function endGame() {
+function endGame(result) {
     gameOver = true;
     let allButtons = document.querySelectorAll(".casilla"); // Obtiene todas las casillas
     allButtons.forEach(btn => btn.disabled = true); // Deshabilita todos los botones
+
+    if (result === "Lose") {
+        // Abre el modal de derrota
+        let loserModal = new bootstrap.Modal(document.getElementById("loserModal"));
+        loserModal.show();
+    } else if (result === "Win") {
+        // Abre el modal de derrota
+        let winnerModal = new bootstrap.Modal(document.getElementById("winnerModal"));
+        winnerModal.show();
+    }
+    
 }
 
 
@@ -71,7 +82,7 @@ function checkBox(id) {
         boxChecked.innerHTML = `<i class="fa-solid fa-bomb"></i>`;
         console.log("BOOM");
         // Termina el juego
-        endGame();
+        endGame("Lose");
         return;
     } 
 
@@ -155,5 +166,29 @@ function checkBox(id) {
             boxChecked.classList.add("g2");
             boxChecked.classList.add("text-danger");
         }
+    }
+
+    // Verifica si todas las casillas sin minas han sido descubiertas
+    if (checkedCells.size === (boardSize * boardSize) - mineBoxes.size) {
+        endGame("Win");
+        console.log("🏆 WINNER! Has ganado el juego.");
+    }
+}
+
+// Poner banderita al hacer click derecho
+function flagMine(event, id) {
+    // Evita que aparezca el menú contextual
+    event.preventDefault(); 
+
+    let button = document.getElementById(id);
+    if (!button || button.classList.contains("g") || button.classList.contains("g2")) return; // No colocar bandera en casillas reveladas
+
+    // Alternar la bandera
+    if (button.classList.contains("flag")) {
+        button.classList.remove("flag");
+        button.innerHTML = ""; // Quitar icono de bandera
+    } else {
+        button.classList.add("flag");
+        button.innerHTML = `<i class="fa-solid fa-flag text-danger"></i>`; // Agregar icono de bandera
     }
 }

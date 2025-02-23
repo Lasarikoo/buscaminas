@@ -1,3 +1,14 @@
+header {
+    position: fixed;
+    height: 5vh !important;
+    width: 100%;
+}
+
+#gameCanva {
+    width: 70vw;
+    height: 70vh;
+}
+
 .casilla {
     width: 22px;
     height: 22px;
